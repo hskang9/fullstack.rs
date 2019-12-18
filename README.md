@@ -1,5 +1,7 @@
-# Fullstack with Flutter and Rust
+# Heist
 
 ## Database: postgresql
-## Backend: actix-web
-## Frontend: flutter-web
+
+## Backend: actix-web, juniper
+
+## Frontend: yew, graphql-client
