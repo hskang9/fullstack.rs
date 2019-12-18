@@ -20,7 +20,7 @@ use crate::db::establish_connection;
 use crate::graphql_schema::{create_schema, Context, Schema};
 
 fn graphiql() -> HttpResponse {
-    let html = graphiql_source("http://localhost:8080/graphql");
+    let html = graphiql_source("http://localhost:5001/graphql");
     HttpResponse::Ok()
         .content_type("text/html; charset=utf-8")
         .body(html)
@@ -44,10 +44,11 @@ fn graphql(
 }
 
 fn main() -> io::Result<()> {
-     dotenv().ok();
+    dotenv().ok();
     let pool = establish_connection();
     let schema_context = Context { db: pool.clone() };
     let schema = std::sync::Arc::new(create_schema());
+    println!("Server running at http://0.0.0.0:5001");
     HttpServer::new(move || {
         App::new()
             .data(schema.clone())
@@ -55,6 +56,6 @@ fn main() -> io::Result<()> {
             .service(web::resource("/graphql").route(web::post().to_async(graphql)))
             .service(web::resource("/graphiql").route(web::get().to(graphiql)))
     })
-    .bind("localhost:8080")?
+    .bind("0.0.0.0:5001")?
     .run()
 }
