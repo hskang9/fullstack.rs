@@ -7,6 +7,7 @@ use std::io;
 use std::sync::Arc;
 
 use actix_web::{web, App, Error, HttpResponse, HttpServer};
+use actix_web_prom::PrometheusMetrics;
 use dotenv::dotenv;
 use futures::future::Future;
 use juniper::http::graphiql::graphiql_source;
@@ -48,9 +49,11 @@ fn main() -> io::Result<()> {
     let pool = establish_connection();
     let schema_context = Context { db: pool.clone() };
     let schema = std::sync::Arc::new(create_schema());
+    let prometheus = PrometheusMetrics::new("api", "/metrics");
     println!("Server running at http://0.0.0.0:5001");
     HttpServer::new(move || {
         App::new()
+            .wrap(prometheus.clone())
             .data(schema.clone())
             .data(schema_context.clone())
             .service(web::resource("/graphql").route(web::post().to_async(graphql)))
