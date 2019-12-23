@@ -1,7 +1,16 @@
-# Heist
+# fullstack.rs
 
-## Database: postgresql
+A progressive fullstack web starter for Rust programmers
 
-## Backend: actix-web, juniper
+- database: postgresql
+- ORM: diesel
+- backend: actix-web, juniper, prometheus
+- frontend: yew, graphql-client
 
-## Frontend: yew, graphql-client
+---
+
+## Backend
+
+---
+
+## Frontend(WIP)
