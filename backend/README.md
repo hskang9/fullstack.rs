@@ -22,7 +22,7 @@ docker-compose up
 In browser, go to [http://localhost:5001/graphiql](http://localhost:3001/graphiql)
 
 Then you will see this image.
-![](https://i.imgur.com/9MhFAiN.png)
+![](https://i.imgur.com/PT2gy4f.png)
 
 The `cargo-watch` package will be running in the container so that the server automatically updates after changes in the project directory including DB and backend.
 
@@ -32,7 +32,8 @@ The `cargo-watch` package will be running in the container so that the server au
 
 ## Monitoring
 
-![](https://i.imgur.com/PT2gy4f.png)
+![](https://i.imgur.com/zLHT3l6.png)
+
 
 Prometheus is available at [http://localhost:9090](http://localhost:9090)
 Grafana is available at [http://localhost:3000](http://localhost:3000),
