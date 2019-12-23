@@ -7,6 +7,10 @@ A progressive fullstack web starter for Rust programmers
 - backend: actix-web, juniper, prometheus
 - frontend: yew, graphql-client
 
+# Starter project
+
+Recipe website for christmas with data from [kaggle](https://www.kaggle.com/jonathanbouchet/hmm-yummy)
+
 ---
 
 ## Backend
