@@ -13,9 +13,10 @@ use futures::future::Future;
 use juniper::http::graphiql::graphiql_source;
 use juniper::http::GraphQLRequest;
 
-mod db;
-mod graphql_schema;
-mod schema;
+pub mod db;
+pub mod graphql_schema;
+pub mod schema;
+pub mod utils;
 
 use crate::db::establish_connection;
 use crate::graphql_schema::{create_schema, Context, Schema};
