@@ -32,7 +32,7 @@ The `cargo-watch` package will be running in the container so that the server au
 
 ## Monitoring
 
-![](https://i.imgur.com/zLHT3l6.png)
+![](https://i.imgur.com/PT2gy4f.png)
 
 Prometheus is available at [http://localhost:9090](http://localhost:9090)
 Grafana is available at [http://localhost:3000](http://localhost:3000),
