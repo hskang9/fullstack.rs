@@ -1,6 +1,6 @@
 # fullstack.rs
 
-A progressive fullstack web starter for Rust programmers
+A progressive modular fullstack application starter for Rust programmers
 
 - database: postgresql
 - ORM: diesel
