@@ -2,6 +2,7 @@
 extern crate diesel;
 extern crate dotenv;
 extern crate juniper;
+extern crate jsonwebtoken as jwt;
 
 use std::io;
 use std::sync::Arc;
@@ -14,12 +15,12 @@ use juniper::http::graphiql::graphiql_source;
 use juniper::http::GraphQLRequest;
 
 pub mod db;
-pub mod graphql_schema;
+pub mod models;
 pub mod schema;
 pub mod utils;
 
 use crate::db::establish_connection;
-use crate::graphql_schema::{create_schema, Context, Schema};
+use crate::models::recipes::{create_schema, Context, Schema};
 
 fn graphiql() -> HttpResponse {
     let html = graphiql_source("http://localhost:5001/graphql");

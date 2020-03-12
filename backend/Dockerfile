@@ -1,3 +1,11 @@
+# author
+MAINTAINER "Hyungsuk Kang"
+
+# extra metadata
+LABEL version="1.0"
+LABEL description="First image with Dockerfile."
+
+
 FROM rustlang/rust:nightly
 
 RUN cargo install diesel_cli --no-default-features --features postgres

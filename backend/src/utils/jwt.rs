@@ -1,6 +1,9 @@
 use jwt::{decode, encode, Header, Validation};
 use chrono::{Local, Duration};
 use actix_web::HttpResponse;
+use serde::{Serialize, Deserialize};
+use std::env;
+
 
 #[derive(Debug, Serialize, Deserialize)]
 struct Claims {
@@ -35,16 +38,16 @@ impl Claims {
 
 pub fn create_token(email: &str, company: &str) -> Result<String, HttpResponse> {
     let claims = Claims::with_email(email, company);
-    encode(&Header::default(), &claims, get_secret())
+    encode(&Header::default(), &claims, get_secret().as_bytes())
         .map_err(|e| HttpResponse::InternalServerError().json(e.to_string()))
 }
 
 pub fn decode_token(token: &str) -> Result<SlimUser, HttpResponse> {
-    decode::<Claims>(token, get_secret(), &Validation::default())
+    decode::<Claims>(token, get_secret().as_bytes(), &Validation::default())
         .map(|data| data.claims.into())
         .map_err(|e| HttpResponse::Unauthorized().json(e.to_string()))
 }
 
-fn get_secret<'a>() -> &'a [u8] {
-    dotenv!("JWT_SECRET").as_bytes()
+fn get_secret() -> String {
+    env::var("JWT_SECRET").expect("JWT_SECRET must be set")
 }

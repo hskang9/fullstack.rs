@@ -21,7 +21,7 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=pass
       # Custom URL for grafana server
       # - GF_SERVER_ROOT_URL=https://hskang9.grafana.net
-      # Plugins to add 
+      # Plugins to add
       # - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
     depends_on:
       - prometheus
